@@ -29,6 +29,8 @@ import { Switch } from "@/components/ui/switch";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { useToast } from "@/components/ui/use-toast";
 import { track } from "@/lib/tracking";
+import CameraModal from "@/components/CameraModal";
+import { Link } from "react-router-dom";
 
  type UploadItem = {
   id: number;
@@ -158,6 +160,9 @@ const BeneficiaryDashboard = () => {
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <h1 className="text-xl font-bold text-foreground">Beneficiary Dashboard</h1>
           <div className="flex items-center gap-2">
+            <Link to="/">
+              <Button variant="outline" size="sm">Home</Button>
+            </Link>
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button variant="ghost" size="icon" className="relative" onClick={() => triggerReminder()}>
@@ -373,24 +378,30 @@ const BeneficiaryDashboard = () => {
         </div>
       </div>
 
-      {/* Capture Dialog */}
-      <Dialog open={isCaptureOpen} onOpenChange={setIsCaptureOpen}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>{captureType === "photo" ? "Capture Photo" : "Record Video"}</DialogTitle>
-            <DialogDescription>Camera preview simulated. Geo-tag and timestamp will be attached.</DialogDescription>
-          </DialogHeader>
-          <div className="aspect-video w-full rounded-md border border-border bg-muted" />
-          <div className="grid gap-2 text-sm text-muted-foreground">
-            <div>Timestamp: {new Date().toLocaleString()}</div>
-            <div>GPS: {randomLocation()}</div>
-          </div>
-          <div className="flex justify-end gap-2">
-            <Button variant="outline" onClick={() => setIsCaptureOpen(false)}>Cancel</Button>
-            <Button onClick={handleSaveCapture}>Save</Button>
-          </div>
-        </DialogContent>
-      </Dialog>
+      <CameraModal
+        open={isCaptureOpen}
+        onOpenChange={setIsCaptureOpen}
+        mode={captureType}
+        onCapture={({ type }) => {
+          const item: UploadItem = {
+            id: Date.now(),
+            type,
+            date: new Date().toISOString().slice(0, 10),
+            status: offline ? "pending" : "verified",
+            asset: type === "photo" ? "New Photo Evidence" : "New Video Evidence",
+            location: randomLocation(),
+          };
+          if (offline) {
+            setSyncQueue((q) => [item, ...q]);
+            track("capture_queued", { type });
+            toast({ title: "Queued Offline", description: "Will sync when back online" });
+          } else {
+            setUploads((u) => [item, ...u]);
+            track("capture_saved", { type });
+            toast({ title: "Upload Added", description: `${type === "photo" ? "Photo" : "Video"} saved` });
+          }
+        }}
+      />
 
       {/* Chat Widget */}
       <Sheet open={chatOpen} onOpenChange={setChatOpen}>
