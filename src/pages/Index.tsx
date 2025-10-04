@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Link } from "react-router-dom";
+import Navbar from "@/components/Navbar";
 
 const Index = () => {
   const [onboardOpen, setOnboardOpen] = useState(false);
@@ -16,19 +17,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border bg-card">
-        <div className="container mx-auto flex h-16 items-center justify-between px-4">
-          <div className="flex items-center gap-2">
-            <Shield className="h-6 w-6 text-primary" />
-            <div>
-              <h1 className="text-xl font-bold text-foreground">loanMitra</h1>
-              <p className="text-xs text-muted-foreground">Your Trusted Loan Companion</p>
-            </div>
-          </div>
-          <Link to="/login"><Button>Login</Button></Link>
-        </div>
-      </header>
+      <Navbar />
 
       {/* Hero Section */}
       <section className="border-b border-border bg-gradient-to-br from-primary/5 to-secondary/5 py-16">
