@@ -10,6 +10,7 @@ import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/components/ui/use-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { track } from "@/lib/tracking";
+import Navbar from "@/components/Navbar";
 
 const Login = () => {
   const [mobileNumber, setMobileNumber] = useState("");
@@ -37,8 +38,9 @@ const Login = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-primary/5 to-secondary/5">
-      <div className="flex w-full flex-col items-center justify-center p-4">
+    <div className="flex min-h-screen flex-col bg-gradient-to-br from-primary/5 to-secondary/5">
+      <Navbar />
+      <div className="flex w-full flex-1 flex-col items-center justify-center p-4">
         {/* Logo and Title */}
         <div className="mb-8 text-center">
           <div className="mb-2 flex items-center justify-center gap-2">
