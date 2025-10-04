@@ -174,9 +174,9 @@ const Login = () => {
           </p>
         </div>
 
-        {/* Back to Home */}
+        {/* Home Button */}
         <Link to="/" className="mt-4">
-          <Button variant="link">← Back to Home</Button>
+          <Button variant="outline">Home</Button>
         </Link>
       </div>
     </div>

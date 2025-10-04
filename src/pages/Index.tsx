@@ -28,6 +28,7 @@ const Index = () => {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link to="/login"><Button size="lg" className="w-full sm:w-auto">Get Started</Button></Link>
               <Button size="lg" variant="outline" className="w-full sm:w-auto" onClick={() => setOnboardOpen(true)}>Learn More</Button>
+              <Link to="/"><Button size="lg" variant="secondary" className="w-full sm:w-auto">Home</Button></Link>
             </div>
           </div>
         </div>

@@ -47,6 +47,9 @@ const Navbar = () => {
         </Link>
         <NavLinks />
         <div className="flex items-center gap-2">
+          <Link to="/" className="hidden md:block">
+            <Button size="sm" variant="secondary">Home</Button>
+          </Link>
           <Link to="/login" className="hidden md:block">
             <Button size="sm">Login</Button>
           </Link>

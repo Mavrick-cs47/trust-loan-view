@@ -22,6 +22,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Link } from "react-router-dom";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -110,6 +111,9 @@ const OfficerDashboard = () => {
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <h1 className="text-xl font-bold text-foreground">Officer Dashboard</h1>
           <div className="flex items-center gap-3">
+            <Link to="/">
+              <Button variant="outline" size="sm">Home</Button>
+            </Link>
             <div className="hidden items-center gap-2 md:flex">
               <span className="text-xs text-muted-foreground">Offline</span>
               <Switch checked={offline} onCheckedChange={setOffline} />
