@@ -35,11 +35,6 @@ const MobileMenu = () => (
 );
 
 const Navbar = () => {
-  const location = useLocation();
-  // Simple hide logic if needed in future based on route
-  const hide = false;
-  if (hide) return null;
-
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/75">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
