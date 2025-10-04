@@ -29,10 +29,13 @@ const Login = () => {
       <div className="flex w-full flex-col items-center justify-center p-4">
         {/* Logo and Title */}
         <div className="mb-8 text-center">
-          <div className="mb-4 flex items-center justify-center gap-2">
+          <div className="mb-2 flex items-center justify-center gap-2">
             <Shield className="h-10 w-10 text-primary" />
-            <h1 className="text-2xl font-bold text-foreground">Loan Asset Tracker</h1>
+            <h1 className="text-2xl font-bold text-foreground">loanMitra</h1>
           </div>
+          <p className="text-sm font-medium text-muted-foreground mb-2">
+            Your Trusted Loan Companion
+          </p>
           <p className="text-sm text-muted-foreground">
             Secure Login with Mobile Number Authentication
           </p>

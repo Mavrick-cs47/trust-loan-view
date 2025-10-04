@@ -38,7 +38,10 @@ const Index = () => {
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <div className="flex items-center gap-2">
             <Shield className="h-6 w-6 text-primary" />
-            <h1 className="text-xl font-bold text-foreground">Loan Asset Tracker</h1>
+            <div>
+              <h1 className="text-xl font-bold text-foreground">loanMitra</h1>
+              <p className="text-xs text-muted-foreground">Your Trusted Loan Companion</p>
+            </div>
           </div>
           <Link to="/login">
             <Button>Login</Button>
@@ -172,8 +175,13 @@ const Index = () => {
       {/* Footer */}
       <footer className="border-t border-border bg-card py-8">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-sm text-muted-foreground">
-            © 2025 Loan Asset Tracker. Powered by AI and Blockchain Technology.
+          <div className="mb-2 flex items-center justify-center gap-2">
+            <Shield className="h-5 w-5 text-primary" />
+            <span className="font-semibold text-foreground">loanMitra</span>
+          </div>
+          <p className="text-xs text-muted-foreground mb-1">Your Trusted Loan Companion</p>
+          <p className="text-xs text-muted-foreground">
+            © 2025 loanMitra. Powered by AI and Blockchain Technology.
           </p>
         </div>
       </footer>
